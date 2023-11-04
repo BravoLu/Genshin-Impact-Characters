@@ -42,9 +42,6 @@ function CardGrid() {
               vision={character.vision}
               rarity={character.rarity}
               weapon={character.weapon}
-              onOpen={clickDetailButton}
-              onClose={onClose}
-              isOpen={isOpen}
             />
           </li>
         ))}

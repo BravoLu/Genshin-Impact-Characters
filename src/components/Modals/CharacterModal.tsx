@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import HttpClient from "../../services/http-service";
-import { CharacterDetail, Characters } from "../Cards/CharacterCard";
+import { useDisclosure } from "@chakra-ui/react";
+import { CharacterDetail } from "../Cards/CharacterCard";
+import GifAnimation from "./GifAnimation";
 import { Image, HStack, Box, Badge, Stack } from "@chakra-ui/react";
 import {
   Button,
@@ -11,20 +13,19 @@ import {
   ModalCloseButton,
   ModalFooter,
 } from "@chakra-ui/react";
+import BasicInfo from "./BasicInfo";
 
 interface Props {
   id: number;
-  isOpen: boolean;
-  onOpen: () => void;
-  onClose: () => void;
 }
 
 interface CharacterProps {
   result: CharacterDetail;
 }
 
-function CharacterModal({ id, isOpen, onOpen, onClose }: Props) {
+function CharacterModal({ id }: Props) {
   // get detail.
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [character, setCharacters] = useState<CharacterDetail | null>(null);
 
   useEffect(() => {
@@ -41,7 +42,7 @@ function CharacterModal({ id, isOpen, onOpen, onClose }: Props) {
       </Button>
       {/* set the size */}
       <Modal isOpen={isOpen} onClose={onClose} size="5xl">
-        <ModalContent bg="Pyro">
+        <ModalContent bg={character?.vision}>
           <HStack justifyContent="center">
             <Box>
               <ModalHeader fontSize={50}>{character?.name}</ModalHeader>
@@ -51,22 +52,17 @@ function CharacterModal({ id, isOpen, onOpen, onClose }: Props) {
           <ModalBody>
             <Image
               justifyContent="center"
-              src={"/AmberPortrait.png"}
+              src={"/" + character?.name + "Portrait.png"}
               w="1000px"
               h="800px"
             />
-            <Stack direction="row">
-              <Badge>Default</Badge>
-              <Badge variant="solid" colorScheme="green">
-                Success
-              </Badge>
-              <Badge variant="solid" colorScheme="red">
-                Removed
-              </Badge>
-              <Badge variant="solid" colorScheme="purple">
-                New
-              </Badge>
-            </Stack>
+            <BasicInfo
+              real_name={character?.real_name}
+              rarity={character?.rarity}
+              title={character?.title}
+              weapon={character?.weapon}
+            />
+            <GifAnimation name={character?.name} />
           </ModalBody>
           <ModalFooter></ModalFooter>
         </ModalContent>

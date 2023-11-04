@@ -1,11 +1,7 @@
 import { StarIcon } from "@chakra-ui/icons";
 import { Box, Icon } from "@chakra-ui/react";
 
-interface Props {
-    rarity: string;
-}
-
-function RarityDisplay({rarity: rarity}: Props) {
+function RarityDisplay({rarity}: {rarity?: string}) {
   let startNum;
   if (rarity === "4_star") {
     startNum = 4;

@@ -26,8 +26,14 @@ export interface CharacterDetail {
   weapon: string;
   vision: string;
   title?: string[];
+  real_name?: string;
+  model_type?: string;
+  constellation?: string;
   modelType?: string;
-  birthday?: string; 
+  birthday?: string;
+  region?: string[];
+  release_day?: string;
+  release_version?: string;
 }
 
 export interface Props {
@@ -36,9 +42,6 @@ export interface Props {
   rarity: string;
   weapon: string;
   vision: string;
-  onOpen: () => void;
-  isOpen: boolean;
-  onClose: () => void;
 }
 
 function CharacterCard({
@@ -47,9 +50,6 @@ function CharacterCard({
   vision: vision,
   rarity: rarity,
   weapon: weapon,
-  onOpen: onOpen,
-  isOpen: isOpen,
-  onClose: onClose,
 }: Props) {
   return (
     // If the picture is larger than the card, we need to set overflow to hidden.
@@ -77,7 +77,7 @@ function CharacterCard({
       </CardBody>
       <Divider />
       <CardFooter justifyContent="center">
-        <CharacterModal id={id} onOpen={onOpen} onClose={onClose} isOpen={isOpen}/>
+        <CharacterModal id={id}/>
       </CardFooter>
     </Card>
   );
