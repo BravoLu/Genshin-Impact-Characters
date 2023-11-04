@@ -14,7 +14,7 @@ function RarityDisplay({rarity: rarity}: Props) {
   }
   const elements = [];
   for (let i = 0; i < startNum; i++) {
-    elements.push(<Icon as={StarIcon} boxSize={6} color="yellow.100" />);
+    elements.push(<StarIcon color="#F7CE55" key={i} margin={2}/>);
   }
 
   return (

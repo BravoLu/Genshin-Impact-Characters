@@ -1,37 +1,56 @@
 import { useEffect, useState } from "react";
 import { SimpleGrid } from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
 import CharacterCard, {
-  CharacterInfo,
+  CharacterDetail,
   Characters,
 } from "./Cards/CharacterCard";
 import HttpClient from "../services/http-service";
+import Pagination from "./Pagination";
 
 function CardGrid() {
-  const [characters, setCharacters] = useState<CharacterInfo[]>([]);
+  const [selectedId, setSelectId] = useState(1);
+  const [characters, setCharacters] = useState<CharacterDetail[]>([]);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [page, setPage] = useState(1);
+
+  const clickDetailButton = () => {
+    setSelectId(2);
+    onOpen();
+  }
+
   useEffect(() => {
     HttpClient("https://gsi.fly.dev")
-      .get<Characters>("/characters")
-      .then(
-        (res) => setCharacters(res.results)
-      );
-  }, []);
+      .get<Characters>("/characters?page=" + String(page))
+      .then((res) => setCharacters(res.results));
+  }, [page]);
+
+  const changePage = (curPage: number) => {
+    setPage(curPage);
+  };
 
   return (
     // TODO: set the adaptive columns.
     // <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4, xl: 5 }} spacing={10} padding='10px'>
-    <SimpleGrid columns={5} spacing={10} padding="10px">
-      {characters.map((character) => (
-        <li>
-          <CharacterCard
-            id={character.id}
-            name={character.name}
-            vision={character.vision}
-            rarity={character.rarity}
-            weapon={character.weapon}
-          />
-        </li>
-      ))}
-    </SimpleGrid>
+    <>
+      <SimpleGrid columns={5} spacing={10} padding="10px">
+        {characters.map((character) => (
+          <li key={character.id}>
+            <CharacterCard
+              id={character.id}
+              name={character.name}
+              vision={character.vision}
+              rarity={character.rarity}
+              weapon={character.weapon}
+              onOpen={clickDetailButton}
+              onClose={onClose}
+              isOpen={isOpen}
+            />
+          </li>
+        ))}
+      </SimpleGrid>
+      <Pagination currentPage={1} totalPages={6} onPageChange={changePage} />
+    </>
   );
 }
 
