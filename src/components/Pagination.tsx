@@ -11,7 +11,7 @@ function Pagination({ currentPage, totalPages, onPageChange }: Props) {
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
-    <HStack spacing={2} justifyContent="center">
+    <HStack spacing={2} justifyContent="center" h="auto">
       {pages.map((page) => (
         <Button
           key={page}

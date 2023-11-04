@@ -57,7 +57,7 @@ function CharacterCard({
     // If the picture is larger than the card, we need to set overflow to hidden.
     <Card borderRadius={10} overflow="hidden" backgroundColor={vision}>
       <CardBody p={0}>
-        <Box w="270px" h="480px">
+        <Box w="200px" h="350px">
           <Image src={"/" + name + ".avif"} borderRadius="lg" />
         </Box>
         <HStack mt="6" spacing="3" justifyContent="center">
@@ -70,7 +70,6 @@ function CharacterCard({
           <RarityDisplay rarity={rarity} />
         </Center>
       </CardBody>
-      <Divider />
       <CardFooter justifyContent="center">
         <CharacterModal id={id} />
       </CardFooter>
