@@ -6,12 +6,13 @@ import {
   TabPanels,
   TabPanel,
   Center,
+  Heading,
 } from "@chakra-ui/react";
 
 function GifAnimation({ name,  }: { name?: string }) {
   return (
     <>
-      <Tabs>
+      <Tabs m="10px">
         <TabList>
           <Tab>Normal Attack</Tab>
           <Tab>Charged Attack</Tab>

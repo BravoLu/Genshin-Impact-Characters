@@ -46,7 +46,7 @@ function CardGrid() {
           </li>
         ))}
       </SimpleGrid>
-      <Pagination currentPage={1} totalPages={6} onPageChange={changePage} />
+      <Pagination currentPage={page} totalPages={6} onPageChange={changePage} />
     </>
   );
 }

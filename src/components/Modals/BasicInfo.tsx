@@ -2,22 +2,21 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
+  Tag,
   TableContainer,
   Image,
   HStack,
   Text,
 } from "@chakra-ui/react";
-import Titles from "./Titles";
+import Tags from "./Tags";
 import { CharacterDetail } from "../Cards/CharacterCard";
 import RarityDisplay from "../RarityDisplay";
 
 function BasicInfo({
-  real_name,
+  name,
   rarity,
   title,
   weapon,
@@ -31,7 +30,7 @@ function BasicInfo({
   release_day,
   release_version,
 }: {
-  real_name?: string;
+  name?: string;
   rarity?: string;
   title?: string[];
   weapon?: string;
@@ -40,7 +39,7 @@ function BasicInfo({
   birthday?: string;
   constellation?: string;
   region?: string;
-  affiliation?: string;
+  affiliation?: string[];
   special_dish?: string;
   release_day?: string;
   release_version?: string;
@@ -48,7 +47,6 @@ function BasicInfo({
   return (
     <TableContainer>
       <Table variant="simple">
-        <TableCaption>Imperial to metric conversion factors</TableCaption>
         <Thead>
           <Tr>
             <Th>Information</Th>
@@ -57,8 +55,8 @@ function BasicInfo({
         </Thead>
         <Tbody>
           <Tr>
-            <Td>Full Name</Td>
-            <Td>{real_name}</Td>
+            <Td>Name</Td>
+            <Td>{name}</Td>
           </Tr>
           <Tr>
             <Td>Rarity</Td>
@@ -69,7 +67,7 @@ function BasicInfo({
           <Tr>
             <Td>Title</Td>
             <Td>
-              <Titles title={title} />
+              <Tags title={title} variant="solid"/>
             </Td>
           </Tr>
           <Tr>
@@ -81,14 +79,66 @@ function BasicInfo({
               </HStack>
             </Td>
           </Tr>
+          <Tr>
+            <Td>Vision</Td>
+            <Td>
+              <HStack>
+                <Text>{vision}</Text>
+              </HStack>
+            </Td>
+          </Tr>
+          <Tr>
+            <Td>Model Type</Td>
+            <Td>
+              <Text>{model_type}</Text>
+            </Td>
+          </Tr>
+          <Tr>
+            <Td>Birthday</Td>
+            <Td>
+              <Text>{birthday}</Text>
+            </Td>
+          </Tr>
+          <Tr>
+            <Td>Constellation</Td>
+            <Td>
+              <Text>{constellation}</Text>
+            </Td>
+          </Tr>
+          <Tr>
+            <Td>Region</Td>
+            <Td>
+              <Text>{region}</Text>
+            </Td>
+          </Tr>
+          <Tr>
+            <Td>Affiliation</Td>
+            <Td>
+              <Tags title={affiliation} variant="subtle"/>
+            </Td>
+          </Tr>
+          <Tr>
+            <Td>Special Dish</Td>
+            <Td>
+              <Text>{special_dish}</Text>
+            </Td>
+          </Tr>
+          <Tr>
+            <Td>Release Day</Td>
+            <Td>
+              <Text>
+                {release_day?.slice(0, 10)} <Tag marginLeft="5px">{release_version}</Tag>{" "}
+              </Text>
+            </Td>
+          </Tr>
         </Tbody>
-        <Tfoot>
+        {/* <Tfoot>
           <Tr>
             <Th>To convert</Th>
             <Th>into</Th>
             <Th isNumeric>multiply by</Th>
           </Tr>
-        </Tfoot>
+        </Tfoot> */}
       </Table>
     </TableContainer>
   );

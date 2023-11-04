@@ -1,10 +1,10 @@
 import { Stack, Badge } from "@chakra-ui/react";
 
-function Titles({ title }: { title?: string[] }) {
+function Tags({ title, variant }: { title?: string[], variant?: string }) {
   return (
     <Stack direction="row">
       {title?.map((t) => (
-        <Badge variant="solid" colorScheme="green">
+        <Badge variant={variant} colorScheme="green">
           {t}
         </Badge>
       ))}
@@ -12,4 +12,4 @@ function Titles({ title }: { title?: string[] }) {
   );
 }
 
-export default Titles;
+export default Tags;

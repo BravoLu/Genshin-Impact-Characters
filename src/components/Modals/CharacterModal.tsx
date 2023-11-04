@@ -38,15 +38,12 @@ function CharacterModal({ id }: Props) {
     <>
       {/* { character === null && null}; */}
       <Button borderRadius={10} margin={10} onClick={onOpen}>
-        Detail
+        View
       </Button>
       {/* set the size */}
       <Modal isOpen={isOpen} onClose={onClose} size="5xl">
         <ModalContent bg={character?.vision}>
           <HStack justifyContent="center">
-            <Box>
-              <ModalHeader fontSize={50}>{character?.name}</ModalHeader>
-            </Box>
             <ModalCloseButton ml="auto" />
           </HStack>
           <ModalBody>
@@ -57,10 +54,19 @@ function CharacterModal({ id }: Props) {
               h="800px"
             />
             <BasicInfo
-              real_name={character?.real_name}
+              name={character?.name}
               rarity={character?.rarity}
               title={character?.title}
               weapon={character?.weapon}
+              vision={character?.vision}
+              model_type={character?.model_type}
+              birthday={character?.birthday}
+              constellation={character?.constellation}
+              region={character?.region && character?.region?.length !== 0 ? character?.region[0]: ""}
+              affiliation={character?.affiliation}
+              special_dish={character?.special_dish}
+              release_day={character?.release_day}
+              release_version={character?.release_version}
             />
             <GifAnimation name={character?.name} />
           </ModalBody>
