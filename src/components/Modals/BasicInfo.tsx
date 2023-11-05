@@ -67,7 +67,7 @@ function BasicInfo({
           <Tr>
             <Td>Title</Td>
             <Td>
-              <Tags title={title} variant="solid"/>
+              <Tags title={title} variant="solid" />
             </Td>
           </Tr>
           <Tr>
@@ -83,6 +83,7 @@ function BasicInfo({
             <Td>Vision</Td>
             <Td>
               <HStack>
+                <Image src={"/common/" + vision + ".png"} boxSize="30px" />
                 <Text>{vision}</Text>
               </HStack>
             </Td>
@@ -114,7 +115,7 @@ function BasicInfo({
           <Tr>
             <Td>Affiliation</Td>
             <Td>
-              <Tags title={affiliation} variant="subtle"/>
+              <Tags title={affiliation} variant="subtle" />
             </Td>
           </Tr>
           <Tr>
@@ -127,7 +128,8 @@ function BasicInfo({
             <Td>Release Day</Td>
             <Td>
               <Text>
-                {release_day?.slice(0, 10)} <Tag marginLeft="5px">{release_version}</Tag>{" "}
+                {release_day?.slice(0, 10)}{" "}
+                <Tag marginLeft="5px">{release_version}</Tag>{" "}
               </Text>
             </Td>
           </Tr>

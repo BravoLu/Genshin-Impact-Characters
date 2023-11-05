@@ -6,7 +6,6 @@ import {
   TabPanels,
   TabPanel,
   Center,
-  Heading,
 } from "@chakra-ui/react";
 
 function GifAnimation({ name,  }: { name?: string }) {
@@ -24,27 +23,27 @@ function GifAnimation({ name,  }: { name?: string }) {
         <TabPanels>
           <TabPanel>
             <Center>
-              <Image src={"/" + name + "Attack.gif"} />
+              <Image src={`/${name}/Normal.gif`} />
             </Center>
           </TabPanel>
           <TabPanel>
             <Center>
-              <Image src={"/" + name + "Charged.gif"} />
+              <Image src={`/${name}/Charged.gif`} />
             </Center>
           </TabPanel>
           <TabPanel>
             <Center>
-              <Image src={"/" + name + "Plunging.gif"} />
+              <Image src={`/${name}/Plunge.gif`} />
             </Center>
           </TabPanel>
           <TabPanel>
             <Center>
-              <Image src={"/" + name + "Skill.gif"} />
+              <Image src={`/${name}/Skill.gif`} />
             </Center>
           </TabPanel>
           <TabPanel>
             <Center>
-              <Image src={"/" + name + "Burst.gif"} />
+              <Image src={`/${name}/Burst.gif`} />
             </Center>
           </TabPanel>
         </TabPanels>

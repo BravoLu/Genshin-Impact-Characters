@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
-import { SimpleGrid, GridItem, Grid, Heading, Center, HStack } from "@chakra-ui/react";
+import {
+  SimpleGrid,
+  GridItem,
+  Grid,
+  Heading,
+  Center,
+  HStack,
+} from "@chakra-ui/react";
 import CharacterCard, {
   CharacterDetail,
   Characters,
@@ -15,9 +22,9 @@ function CardGrid() {
 
   useEffect(() => {
     HttpClient("https://gsi.fly.dev")
-      .get<Characters>("/characters?page=" + String(page))
+      .get<Characters>("/characters?limit=51")
       .then((res) => setCharacters(res.results));
-  }, [page]);
+  }, []);
 
   const changePage = (curPage: number) => {
     setPage(curPage);
@@ -32,44 +39,62 @@ function CardGrid() {
                   "nav select"
                   "nav main"
                   "nav footer"`}
-        gridTemplateRows={"50px 1fr 1350px"}
-        gridTemplateColumns={"150px 1fr"}
-        h="auto"
-        w="auto"
-        color="blackAlpha.700"
+        gridTemplateRows={"100px 50px 1250px"}
+        gridTemplateColumns={"120px 1400px"}
+        // h="auto"
+        // w="auto"
+        color="#303030"
         fontWeight="bold"
       >
-        <GridItem pl="2" area={"header"}>
+        <GridItem pl="2" area={"header"} bg="Background">
           <Center>
             <Heading>Genshin Impact</Heading>
           </Center>
         </GridItem>
-        <GridItem pl="2" bg="blackAlpha.700" area={"nav"}>
-            <NavList items={characters.map(c => ({name: c.name, vision: c.vision}))} />
+        <GridItem pl="2" bg="Background" area={"nav"}>
+          <NavList
+            items={characters
+              .slice(
+                (page - 1) * 10,
+                page * 10 > characters.length ? characters.length : page * 10
+              )
+              .map((c) => ({
+                name: c.name,
+                vision: c.vision,
+                id: c.id,
+              }))}
+          />
         </GridItem>
-        <GridItem pl="2" bg="blackAlpha.700" area={"select"}>
+        <GridItem pl="2" bg="Background" area={"select"}>
           <HStack>
-            <Selector />
-            <Selector />
-            <Selector />
+            <Selector title={"Vision"} options={["Pyro", "Hydro"]} />
+            <Selector title={"Region"} options={["Liyue", "M"]} />
+            <Selector title={"Weapon"} options={["Bow", "Sword"]} />
           </HStack>
         </GridItem>
-        <GridItem pl="2" bg="blackAlpha.700" area={"main"}>
-          <SimpleGrid columns={5} spacing={10} padding="10px">
-            {characters.map((character) => (
-              <li key={character.id}>
-                <CharacterCard
-                  id={character.id}
-                  name={character.name}
-                  vision={character.vision}
-                  rarity={character.rarity}
-                  weapon={character.weapon}
-                />
-              </li>
-            ))}
-          </SimpleGrid>
+        <GridItem pl="2" bg="Background" area={"main"}>
+          <Center>
+            <SimpleGrid columns={5} spacing={5}>
+              {characters
+                .slice(
+                  (page - 1) * 10,
+                  page * 10 > characters.length ? characters.length : page * 10
+                )
+                .map((character) => (
+                  <li key={character.id}>
+                    <CharacterCard
+                      id={character.id}
+                      name={character.name}
+                      vision={character.vision}
+                      rarity={character.rarity}
+                      weapon={character.weapon}
+                    />
+                  </li>
+                ))}
+            </SimpleGrid>
+          </Center>
         </GridItem>
-        <GridItem pl="2" bg="blackAlpha.700" area={"footer"}>
+        <GridItem pl="2" bg="Background" area={"footer"}>
           <Pagination
             currentPage={page}
             totalPages={6}

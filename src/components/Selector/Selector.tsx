@@ -1,16 +1,21 @@
-import { Heading, Select, Stack } from "@chakra-ui/react";
+import { Heading, Select, HStack } from "@chakra-ui/react";
 
-function Selector() {
+interface Props {
+  title: string;
+  options: string[];
+}
+
+function Selector({ title, options }: Props) {
   return (
     <>
-      <Stack>
-        <Heading>Vision</Heading>
-        <Select placeholder="Select option">
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
+      <HStack>
+        <Heading>{title}</Heading>
+        <Select>
+          {options.map((option) => (
+            <option value={option}>{option}</option>
+          ))}
         </Select>
-      </Stack>
+      </HStack>
     </>
   );
 }

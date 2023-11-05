@@ -21,7 +21,8 @@ const theme = extendTheme({
     Hydro: "#70A0CC",
     Anemo: "#80E6BF",
     None: "#BEBEBE",
-    Star: "#F7CE55"
+    Star: "#F7CE55",
+    Background: "#141414"
     // ... define other color palettes
   },
   // ... other theme customizations
