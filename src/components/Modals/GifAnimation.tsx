@@ -6,36 +6,30 @@ import {
   TabPanels,
   TabPanel,
   Center,
+  HStack,
+  Text,
 } from "@chakra-ui/react";
 
-function GifAnimation({ name,  }: { name?: string }) {
+function GifAnimation({ name }: { name?: string }) {
   return (
     <>
       <Tabs m="10px">
         <TabList>
-          <Tab>Normal Attack</Tab>
-          <Tab>Charged Attack</Tab>
-          <Tab>Plunging Attack</Tab>
-          <Tab>Elemental Skill</Tab>
-          <Tab>Elemental Burst</Tab>
+          <Tab>
+            <HStack>
+              <Image src={`/${name}/Skill.png`} boxSize="30px" />
+              <Text>Elemental Skill</Text>
+            </HStack>
+          </Tab>
+          <Tab>
+            <HStack>
+              <Image src={`/${name}/Burst.png`} boxSize="30px" />
+              <Text>Elemental Burst</Text>
+            </HStack>
+          </Tab>
         </TabList>
 
         <TabPanels>
-          <TabPanel>
-            <Center>
-              <Image src={`/${name}/Normal.gif`} />
-            </Center>
-          </TabPanel>
-          <TabPanel>
-            <Center>
-              <Image src={`/${name}/Charged.gif`} />
-            </Center>
-          </TabPanel>
-          <TabPanel>
-            <Center>
-              <Image src={`/${name}/Plunge.gif`} />
-            </Center>
-          </TabPanel>
           <TabPanel>
             <Center>
               <Image src={`/${name}/Skill.gif`} />

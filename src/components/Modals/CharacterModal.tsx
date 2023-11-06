@@ -35,7 +35,9 @@ function CharacterModal({ id: id, isButton: isButton }: Props) {
   useEffect(() => {
     HttpClient("https://gsi.fly.dev")
       .get<CharacterProps>("/characters/" + String(id))
-      .then((res) => setCharacters(res.result));
+      .then(
+        (res) => setCharacters(res.result)
+      );
     // .then((res) => console.log("abc", String(id), res))
   }, [character]);
 
@@ -62,7 +64,7 @@ function CharacterModal({ id: id, isButton: isButton }: Props) {
         </HStack>
       )}
       {/* set the size */}
-      <Modal isOpen={isOpen} onClose={onClose} size="5xl">
+      <Modal isOpen={isOpen} onClose={onClose} size="3xl">
         <ModalContent
           bg={character?.vision}
           backgroundImage={`/${character?.name}/Banner.png`}

@@ -58,12 +58,12 @@ function CharacterCard({
     <Card borderRadius={10} overflow="hidden" backgroundColor={vision}>
       <CardBody p={0}>
         <Box w="254px" h="450px">
-          <Image src={`/${name}.avif`} borderTopRadius="lg" />
+          <Image src={`/${name}/Poster.png`} borderTopRadius="lg" />
         </Box>
         <Box backgroundImage={`/${name}/Banner.png`} bgSize="cover">
         <Divider />
           <HStack justifyContent="center">
-            <Image src={`/${weapon}.png`} boxSize="50px" />
+            <Image src={`/common/${vision}.png`} boxSize="50px" />
             <Heading fontSize="2xl" size="md">
               {name}
             </Heading>

@@ -14,6 +14,8 @@ import {
 import Tags from "./Tags";
 import { CharacterDetail } from "../Cards/CharacterCard";
 import RarityDisplay from "../RarityDisplay";
+import Constellation from "./Constellation"
+import IconText from "./IconText"
 
 function BasicInfo({
   name,
@@ -56,12 +58,23 @@ function BasicInfo({
         <Tbody>
           <Tr>
             <Td>Name</Td>
-            <Td>{name}</Td>
+            <Td>
+              <HStack>
+              <Image src={`/${name}/${name}.png`} boxSize="30px" />
+                <Text>{name}</Text>
+              </HStack>
+            </Td>
           </Tr>
           <Tr>
             <Td>Rarity</Td>
             <Td>
               <RarityDisplay rarity={rarity} />
+            </Td>
+          </Tr>
+          <Tr>
+            <Td>Birthday</Td>
+            <Td>
+              <Text>{birthday}</Text>
             </Td>
           </Tr>
           <Tr>
@@ -73,14 +86,11 @@ function BasicInfo({
           <Tr>
             <Td>Weapon</Td>
             <Td>
-              <HStack>
-                <Image src={"/" + weapon + ".png"} boxSize="30px" />
-                <Text>{weapon}</Text>
-              </HStack>
+               <IconText text={weapon} />
             </Td>
           </Tr>
           <Tr>
-            <Td>Vision</Td>
+            <Td>Element</Td>
             <Td>
               <HStack>
                 <Image src={"/common/" + vision + ".png"} boxSize="30px" />
@@ -95,21 +105,15 @@ function BasicInfo({
             </Td>
           </Tr>
           <Tr>
-            <Td>Birthday</Td>
-            <Td>
-              <Text>{birthday}</Text>
-            </Td>
-          </Tr>
-          <Tr>
             <Td>Constellation</Td>
             <Td>
-              <Text>{constellation}</Text>
+                <Constellation name={name ? name: ""} />
             </Td>
           </Tr>
           <Tr>
             <Td>Region</Td>
             <Td>
-              <Text>{region}</Text>
+                <IconText text={region} />
             </Td>
           </Tr>
           <Tr>

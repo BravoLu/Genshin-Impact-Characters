@@ -23,7 +23,13 @@ function CardGrid() {
   useEffect(() => {
     HttpClient("https://gsi.fly.dev")
       .get<Characters>("/characters?limit=51")
-      .then((res) => setCharacters(res.results));
+      .then((res) =>
+        setCharacters(
+          res.results.filter(
+            (item) => item.id !== 20 && item.id !== 21 && item.id !== 50
+          )
+        )
+      );
   }, []);
 
   const changePage = (curPage: number) => {
@@ -48,7 +54,7 @@ function CardGrid() {
       >
         <GridItem pl="2" area={"header"} bg="Background">
           <Center>
-            <Heading>Genshin Impact</Heading>
+            <Heading mt={8}>Genshin Impact Character Gallery</Heading>
           </Center>
         </GridItem>
         <GridItem pl="2" bg="Background" area={"nav"}>
@@ -97,7 +103,7 @@ function CardGrid() {
         <GridItem pl="2" bg="Background" area={"footer"}>
           <Pagination
             currentPage={page}
-            totalPages={6}
+            totalPages={5}
             onPageChange={changePage}
           />
         </GridItem>

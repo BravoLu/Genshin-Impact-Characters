@@ -9,8 +9,8 @@ function Selector({ title, options }: Props) {
   return (
     <>
       <HStack>
-        <Heading>{title}</Heading>
-        <Select>
+        <Heading fontSize="20px">{title}</Heading>
+        <Select bgColor="white">
           {options.map((option) => (
             <option value={option}>{option}</option>
           ))}
