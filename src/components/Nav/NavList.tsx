@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { List, ListItem, HStack } from "@chakra-ui/react";
+import { List, ListItem } from "@chakra-ui/react";
 import CharacterModal from "../Modals/CharacterModal";
 
 interface NavItem {
@@ -13,7 +13,7 @@ interface Props {
 }
 
 function NavList({ items: items }: Props) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
     setIsHovered(true);

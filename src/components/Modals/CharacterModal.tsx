@@ -25,7 +25,6 @@ interface CharacterProps {
 }
 
 function CharacterModal({ id: id, isButton: isButton }: Props) {
-  // get detail.
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [character, setCharacters] = useState<CharacterDetail | null>(null);
 

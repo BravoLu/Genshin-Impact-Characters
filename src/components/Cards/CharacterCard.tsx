@@ -2,7 +2,6 @@ import {
   Card,
   Image,
   CardBody,
-  CardFooter,
   Heading,
   Divider,
   Center,
@@ -42,7 +41,6 @@ export interface Props {
   id: number;
   name: string;
   rarity: string;
-  weapon: string;
   vision: string;
 }
 
@@ -51,7 +49,6 @@ function CharacterCard({
   name: name,
   vision: vision,
   rarity: rarity,
-  weapon: weapon,
 }: Props) {
   return (
     // If the picture is larger than the card, we need to set overflow to hidden.

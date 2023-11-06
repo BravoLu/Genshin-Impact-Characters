@@ -7,6 +7,7 @@ import {
   Center,
   HStack,
   Box,
+  Text,
 } from "@chakra-ui/react";
 import CharacterCard, {
   CharacterDetail,
@@ -76,7 +77,7 @@ function CardGrid() {
                   "nav select"
                   "nav main"
                   "nav footer"`}
-        gridTemplateRows={{base: "12% 6% auto"}}
+        gridTemplateRows={{base: "6% 4% auto 6%"}}
         gridTemplateColumns={"160px 1fr"}   // Use "1fr" for flexible column size
         color="black"
         fontWeight="bold"
@@ -105,12 +106,12 @@ function CardGrid() {
         <GridItem pl="2" bg="Background" area={"select"}>
           <HStack>
             <Selector
-              title={"Elements"}
+              title={"Element"}
               options={Elements}
               onSelect={onSelectElement}
             />
             <Selector
-              title={"Weapons"}
+              title={"Weapon"}
               options={Weapons}
               onSelect={onSelectWeapon}
             />
@@ -134,7 +135,6 @@ function CardGrid() {
                       name={character.name}
                       vision={character.vision}
                       rarity={character.rarity}
-                      weapon={character.weapon}
                     />
                   </li>
                 ))}
@@ -147,6 +147,11 @@ function CardGrid() {
             totalPages={SelectorFilter(characters).length / 10 + 1}
             onPageChange={changePage}
           />
+          <Box mt={10}>
+            <Center>
+              <Text color="white">Copyright@2023 BravoLu</Text>
+            </Center>
+            </Box>
         </GridItem>
       </Grid>
     </Box>
