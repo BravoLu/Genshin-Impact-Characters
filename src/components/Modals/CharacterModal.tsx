@@ -4,17 +4,14 @@ import { useDisclosure } from "@chakra-ui/react";
 import { CharacterDetail } from "../Cards/CharacterCard";
 import GifAnimation from "./GifAnimation";
 import AvatarIcon from "../Nav/AvatarIcon";
-import { Image, HStack, Box, Badge, Stack } from "@chakra-ui/react";
+import { Image, HStack } from "@chakra-ui/react";
 import {
   Button,
   Modal,
   ModalContent,
-  ModalHeader,
   Text,
   ListIcon,
   ModalBody,
-  ModalCloseButton,
-  ModalFooter,
 } from "@chakra-ui/react";
 import BasicInfo from "./BasicInfo";
 
@@ -35,15 +32,11 @@ function CharacterModal({ id: id, isButton: isButton }: Props) {
   useEffect(() => {
     HttpClient("https://gsi.fly.dev")
       .get<CharacterProps>("/characters/" + String(id))
-      .then(
-        (res) => setCharacters(res.result)
-      );
-    // .then((res) => console.log("abc", String(id), res))
+      .then((res) => setCharacters(res.result));
   }, [character]);
 
   return (
     <>
-      {/* { character === null && null}; */}
       {isButton && (
         <Button
           borderRightRadius={3}
@@ -70,15 +63,12 @@ function CharacterModal({ id: id, isButton: isButton }: Props) {
           backgroundImage={`/${character?.name}/Banner.png`}
           backgroundSize="cover"
         >
-          <HStack justifyContent="center">
-            <ModalCloseButton ml="auto" />
-          </HStack>
           <ModalBody>
             <Image
               justifyContent="center"
               src={`/${character?.name}/SplashArt.png`}
-              w="1000px"
-              h="800px"
+              w="auto"
+              h="auto"
             />
             <BasicInfo
               name={character?.name}
@@ -88,7 +78,6 @@ function CharacterModal({ id: id, isButton: isButton }: Props) {
               vision={character?.vision}
               model_type={character?.model_type}
               birthday={character?.birthday}
-              constellation={character?.constellation}
               region={
                 character?.region && character?.region?.length !== 0
                   ? character?.region[0]
@@ -101,7 +90,6 @@ function CharacterModal({ id: id, isButton: isButton }: Props) {
             />
             <GifAnimation name={character?.name} />
           </ModalBody>
-          <ModalFooter></ModalFooter>
         </ModalContent>
       </Modal>
     </>

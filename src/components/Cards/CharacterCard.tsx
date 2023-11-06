@@ -57,7 +57,7 @@ function CharacterCard({
     // If the picture is larger than the card, we need to set overflow to hidden.
     <Card borderRadius={10} overflow="hidden" backgroundColor={vision}>
       <CardBody p={0}>
-        <Box w="254px" h="450px">
+        <Box w="auto" h="auto">
           <Image src={`/${name}/Poster.png`} borderTopRadius="lg" />
         </Box>
         <Box backgroundImage={`/${name}/Banner.png`} bgSize="cover">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { List, ListItem, ListIcon, HStack, Text } from "@chakra-ui/react";
+import { List, ListItem, HStack } from "@chakra-ui/react";
 import CharacterModal from "../Modals/CharacterModal";
 
 interface NavItem {
@@ -27,16 +27,15 @@ function NavList({ items: items }: Props) {
       {items.map((item) => {
         return (
           <ListItem
+            key={item.id}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             _hover={{
-              background: "lightgray", // Change the background color on hover
+              background: "white", // Change the background color on hover
               cursor: "pointer", // Change the cursor to indicate it's clickable
             }}
           >
-            <HStack>
-              <CharacterModal id={item.id} isButton={false} />
-            </HStack>
+            <CharacterModal id={item.id} isButton={false} />
           </ListItem>
         );
       })}

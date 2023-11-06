@@ -25,6 +25,16 @@ const theme = extendTheme({
     Background: "#141414"
     // ... define other color palettes
   },
+  styles: {
+    global: {
+      body: {
+        bg: '#141414', // Set the background color to white (or any other color you prefer)
+      },
+      footer: {
+        bg: '#141414'
+      }
+    },
+  },
   // ... other theme customizations
 });
 

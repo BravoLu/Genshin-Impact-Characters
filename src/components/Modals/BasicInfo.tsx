@@ -12,10 +12,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Tags from "./Tags";
-import { CharacterDetail } from "../Cards/CharacterCard";
 import RarityDisplay from "../RarityDisplay";
-import Constellation from "./Constellation"
-import IconText from "./IconText"
+import Constellation from "./Constellation";
+import IconText from "./IconText";
 
 function BasicInfo({
   name,
@@ -25,7 +24,6 @@ function BasicInfo({
   vision,
   model_type,
   birthday,
-  constellation,
   region,
   affiliation,
   special_dish,
@@ -39,7 +37,6 @@ function BasicInfo({
   vision?: string;
   model_type?: string;
   birthday?: string;
-  constellation?: string;
   region?: string;
   affiliation?: string[];
   special_dish?: string;
@@ -60,7 +57,7 @@ function BasicInfo({
             <Td>Name</Td>
             <Td>
               <HStack>
-              <Image src={`/${name}/${name}.png`} boxSize="30px" />
+                <Image src={`/${name}/${name}.png`} boxSize="30px" />
                 <Text>{name}</Text>
               </HStack>
             </Td>
@@ -86,16 +83,13 @@ function BasicInfo({
           <Tr>
             <Td>Weapon</Td>
             <Td>
-               <IconText text={weapon} />
+              <IconText text={weapon} />
             </Td>
           </Tr>
           <Tr>
             <Td>Element</Td>
             <Td>
-              <HStack>
-                <Image src={"/common/" + vision + ".png"} boxSize="30px" />
-                <Text>{vision}</Text>
-              </HStack>
+              <IconText text={vision} />
             </Td>
           </Tr>
           <Tr>
@@ -107,13 +101,13 @@ function BasicInfo({
           <Tr>
             <Td>Constellation</Td>
             <Td>
-                <Constellation name={name ? name: ""} />
+              <Constellation name={name ? name : ""} />
             </Td>
           </Tr>
           <Tr>
             <Td>Region</Td>
             <Td>
-                <IconText text={region} />
+              <IconText text={region} />
             </Td>
           </Tr>
           <Tr>
@@ -138,13 +132,6 @@ function BasicInfo({
             </Td>
           </Tr>
         </Tbody>
-        {/* <Tfoot>
-          <Tr>
-            <Th>To convert</Th>
-            <Th>into</Th>
-            <Th isNumeric>multiply by</Th>
-          </Tr>
-        </Tfoot> */}
       </Table>
     </TableContainer>
   );
