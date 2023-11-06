@@ -1,6 +1,6 @@
 # Genshin-Impact Character Gallery
 
-This repository is based on Typescript, react, vite and chakra-ui. Click link [Genshin-Impact Character Gallery](https://www.bravolu.cn/Genshin-Impact-Character-Gallery) to explore this application.
+This repository is based on Typescript, react, vite and chakra-ui. Click link [Genshin-Impact Character Gallery](https://Genshin-Impact-Character-Gallery.vercel.app) to explore this application.
 
 ![img](./images/Genshin-Impact-Character-Gallery.jpg)
 
